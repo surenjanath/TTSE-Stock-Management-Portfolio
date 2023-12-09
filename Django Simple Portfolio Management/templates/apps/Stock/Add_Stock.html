@@ -1,0 +1,443 @@
+{% extends "partials/base.html" %}
+{% load static %}
+{% block title %}Tracker{% endblock title %}
+{% block content %}
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    {% block pagetitle %}
+                    {% include "partials/page-title.html" with pagetitle="Manage Stocks" title="Tracker" %}
+                    {% endblock pagetitle %}
+
+                    <div class="row">
+                        <div class="col-xxl-4">
+                            <div class="card card-height-100">
+                                <div class="card-header">
+                                    <ul class="nav nav-tabs-custom rounded card-header-tabs nav-justified border-bottom-0 mx-n3" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-bs-toggle="tab" href="#cryptoBuy" role="tab">
+                                                Add Stocks/Bonds
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="tab-content text-muted">
+                                        <div class="tab-pane active" id="cryptoBuy" role="tabpanel">
+                                            {% comment %} <div class="p-3 bg-soft-primary">
+                                                <div class="float-end ms-2">
+                                                    <h6 class="text-primary mb-0">USD Balance : <span class="text-dark">$12,426.07</span></h6>
+                                                </div>
+                                                <h6 class="mb-0 text-primary">Buy Coin</h6>
+                                            </div> {% endcomment %}
+                                            <div class="p-3">
+                                                <div class="row">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <div class="mb-3">
+                                                                    <label>Type :</label>
+                                                                    <select class="form-select" id="stockType">
+                                                                        <option>Bond</option>
+                                                                        <option>Stock</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div><!-- end col -->
+                                                            <div class="col-6">
+                                                                <div class="mb-3">
+                                                                    <label>Site :</label>
+                                                                    <select class="form-select" id="stockSite">
+                                                                        <option>TTSE</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div><!-- end col -->
+                                                            <div class="input-group mb-3">
+                                                                <label class="input-group-text">TTSE SYMBOL</label>
+                                                                <input type="text" class="form-control" id="ttseSymbol" placeholder="eg FCGFH">
+                                                            </div>
+                                                            <div class="mt-3 pt-1 mb-3">
+                                                                <button type="button" class="btn btn-primary w-100" onclick="addStock()">Add Stock</button>
+                                                            </div>
+                                                        </div><!-- end row -->
+                                                    </div>
+                                                </div><!-- end row -->
+                                                <div>
+
+                                                    <div class="col-12">
+                                                        <div class="mb-3">
+                                                            <label>Number of Stocks Purchased :</label>
+                                                            <input type="number" class="form-control" placeholder="eg 1,000,000">
+                                                        </div>
+                                                    </div><!-- end col -->
+                                                    <div class="col-12">
+                                                        <div class="mb-3">
+                                                            <label>Date Started :</label>
+                                                            <input type="text" class="form-control flatpickr-input" data-provider="flatpickr" data-date-format="d M, Y" id="start-date" placeholder="Select date" readonly="readonly">
+                                                        </div>
+                                                    </div><!-- end col -->
+
+                                                    <div class="col-12">
+                                                        <div class="mb-3">
+                                                            <label>Note :</label>
+                                                            <input type="text" class="form-control" id="Note" placeholder="add note here..">
+                                                        </div>
+                                                    </div><!-- end col -->
+                                                </div>
+
+                                                <div class="mt-3 pt-2">
+                                                    <div class="d-flex mb-4">
+                                                        <div class="flex-grow-1">
+                                                            <p class="fs-13 mb-0">Stock Name :</p>
+                                                        </div>
+                                                        <div class="flex-grow-0">
+                                                            <h6 class="mb-0">FIRST CITIZENS GROUP FINANCIAL HOLDINGS LIMITED</h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex mb-2">
+                                                        <div class="flex-grow-1">
+                                                            <p class="fs-13 mb-0">Stock Website :</p>
+                                                        </div>
+                                                        <div class="flex-shrink-0">
+                                                            <h6 class="mb-0">$7.85</h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex mb-2">
+                                                        <div class="flex-grow-1">
+                                                            <p class="fs-13 mb-0">Opening Price :</p>
+                                                        </div>
+                                                        <div class="flex-shrink-0">
+                                                            <h6 class="mb-0">$ 49.11</h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex mb-2">
+                                                        <div class="flex-grow-1">
+                                                            <p class="fs-13 mb-0">Closing Price :</p>
+                                                        </div>
+                                                        <div class="flex-shrink-0">
+                                                            <h6 class="mb-0">$ 49.18</h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex mb-2">
+                                                        <div class="flex-grow-1">
+                                                            <p class="fs-13 mb-0">Stock Website :</p>
+                                                        </div>
+                                                        <div class="flex-shrink-0">
+                                                            <h6 class="mb-0"><a href="https://www.firstcitizenstt.com/contact.html">Click Here</a></h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex mb-2">
+                                                        <div class="flex-grow-1">
+                                                            <p class="fs-13 mb-0">ISSUED SHARE CAPITAL :</p>
+                                                        </div>
+                                                        <div class="flex-shrink-0">
+                                                            <h6 class="mb-0">$ 251,353,562</h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex mb-2">
+                                                        <div class="flex-grow-1">
+                                                            <p class="fs-13 mb-0">MARKET CAPITALIZATION	:</p>
+                                                        </div>
+                                                        <div class="flex-shrink-0">
+                                                            <h6 class="mb-0">$ 12,361,568,179.16</h6>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="mt-3 pt-2">
+                                                    <button type="button" class="btn btn-primary w-100">Add Stock to Tracker</button>
+                                                </div>
+                                            </div>
+                                        </div><!--end tab-pane-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-xxl-8">
+                            <div class="row">
+                                <div class="col-xxl-6 col-md-6">
+                                    <div class="card overflow-hidden border-0">
+                                        <div class="card-body bg-soft-primary">
+                                            <h5 class="fs-17 text-center mb-0">Stocks</h5>
+                                        </div>
+                                    </div>
+                                    {% comment %} <div class="card mb-2">
+                                        <div class="card-body">
+                                            <div class="d-flex mb-3">
+                                                <div class="flex-shrink-0 avatar-sm">
+                                                    <div class="avatar-title bg-light rounded">
+                                                        <img src="{% static 'images/svg/crypto-icons/btc.svg'%}" alt="" class="avatar-xxs" />
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h5 class="fs-15 mb-1">Data Wallet</h5>
+                                                    <p class="text-muted mb-2">Blockchain Services</p>
+                                                </div>
+                                                <div>
+                                                    <a href="javascript:void(0);" class="badge badge-soft-secondary">Visit Website <i class="ri-arrow-right-up-line align-bottom"></i></a>
+                                                </div>
+                                            </div>
+                                            <h6 class="text-muted mb-0">$15,00,000 / $13,75,954  <span class="badge badge-soft-success">89.97%</span></h6>
+                                        </div>
+                                        <div class="card-body border-top border-top-dashed">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <h6 class="mb-0">4.8 <i class="ri-star-fill align-bottom text-warning"></i></h6>
+                                                </div>
+                                                <h6 class="flex-shrink-0 text-success mb-0"><i class="ri-time-line align-bottom"></i> 05 Days</h6>
+                                            </div>
+                                        </div>
+                                    </div><!--end card-->
+                                    <div class="card mb-2">
+                                        <div class="card-body">
+                                            <div class="d-flex mb-3">
+                                                <div class="flex-shrink-0 avatar-sm">
+                                                    <div class="avatar-title bg-light rounded">
+                                                        <img src="{% static 'images/companies/img-6.png'%}" alt="" class="avatar-xxs" />
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h5 class="fs-15 mb-1">GreatRiver Technology</h5>
+                                                    <p class="text-muted mb-2">Information Technology</p>
+                                                </div>
+                                                <div>
+                                                    <a href="javascript:void(0);" class="badge badge-soft-secondary">Visit Website <i class="ri-arrow-right-up-line align-bottom"></i></a>
+                                                </div>
+                                            </div>
+                                            <h6 class="text-muted mb-1">$39,00,000 / $31,57,654  <span class="badge badge-soft-success">84.57%</span></h6>
+                                        </div>
+                                        <div class="card-body border-top border-top-dashed">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <h6 class="mb-0">4.4 <i class="ri-star-fill align-bottom text-warning"></i></h6>
+                                                </div>
+                                                <h6 class="flex-shrink-0 text-success mb-0"><i class="ri-time-line align-bottom"></i> 15 Days</h6>
+                                            </div>
+                                        </div>
+                                    </div><!--end card-->
+                                    <div class="card mb-2">
+                                        <div class="card-body">
+                                            <div class="d-flex mb-3">
+                                                <div class="flex-shrink-0 avatar-sm">
+                                                    <div class="avatar-title bg-light rounded">
+                                                        <img src="{% static 'images/svg/crypto-icons/vtc.svg'%}" alt="" class="avatar-xxs" />
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h5 class="fs-15 mb-1">Manta Network Finance</h5>
+                                                    <p class="text-muted mb-2">Finance Services</p>
+                                                </div>
+                                                <div>
+                                                    <a href="javascript:void(0);" class="badge badge-soft-secondary">Visit Website <i class="ri-arrow-right-up-line align-bottom"></i></a>
+                                                </div>
+                                            </div>
+                                            <h6 class="text-muted mb-0">$42,50,000 / $30,84,214  <span class="badge badge-soft-success">70.24%</span></h6>
+                                        </div>
+                                        <div class="card-body border-top border-top-dashed">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <h6 class="mb-0">2.7 <i class="ri-star-fill align-bottom text-warning"></i></h6>
+                                                </div>
+                                                <h6 class="flex-shrink-0 text-primary mb-0"><i class="ri-time-line align-bottom"></i> 25 Jan, 2022</h6>
+                                            </div>
+                                        </div>
+                                    </div><!--end card-->
+                                    <div class="card mb-2">
+                                        <div class="card-body">
+                                            <div class="d-flex mb-3">
+                                                <div class="flex-shrink-0 avatar-sm">
+                                                    <div class="avatar-title bg-light rounded">
+                                                        <img src="{% static 'images/svg/crypto-icons/xsg.svg'%}" alt="" class="avatar-xxs" />
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h5 class="fs-15 mb-1">Goldfinch Network</h5>
+                                                    <p class="text-muted mb-2">Blockchain Services</p>
+                                                </div>
+                                                <div>
+                                                    <a href="javascript:void(0);" class="badge badge-soft-secondary">Visit Website <i class="ri-arrow-right-up-line align-bottom"></i></a>
+                                                </div>
+                                            </div>
+                                            <h6 class="text-muted mb-0">$28,00,000 / $8,74,986  <span class="badge badge-soft-success">24.57%</span></h6>
+                                        </div>
+                                        <div class="card-body border-top border-top-dashed">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <h6 class="mb-0">3.2 <i class="ri-star-fill align-bottom text-warning"></i></h6>
+                                                </div>
+                                                <h6 class="flex-shrink-0 text-primary mb-0"><i class="ri-time-line align-bottom"></i> 04 Feb, 2022</h6>
+                                            </div>
+                                        </div>
+                                    </div><!--end card-->
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="d-flex mb-3">
+                                                <div class="flex-shrink-0 avatar-sm">
+                                                    <div class="avatar-title bg-light rounded">
+                                                        <img src="{% static 'images/companies/img-8.png'%}" alt="" class="avatar-xxs" />
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h5 class="fs-15 mb-1">Galaxy War</h5>
+                                                    <p class="text-muted mb-2">Gaming</p>
+                                                </div>
+                                                <div>
+                                                    <a href="javascript:void(0);" class="badge badge-soft-secondary">Visit Website <i class="ri-arrow-right-up-line align-bottom"></i></a>
+                                                </div>
+                                            </div>
+                                            <h6 class="text-muted mb-0">$40,00,000 / $24,12,741  <span class="badge badge-soft-success">62.04%</span></h6>
+                                        </div>
+                                        <div class="card-body border-top border-top-dashed">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <h6 class="mb-0">3.9 <i class="ri-star-fill align-bottom text-warning"></i></h6>
+                                                </div>
+                                                <h6 class="flex-shrink-0 text-primary mb-0"><i class="ri-time-line align-bottom"></i> 05 March, 2022</h6>
+                                            </div>
+                                        </div>
+                                    </div><!--end card--> {% endcomment %}
+                                </div><!--end col-->
+
+                                <div class="col-xxl-6 col-md-6">
+                                    <div class="card overflow-hidden border-0">
+                                        <div class="card-body bg-soft-primary">
+                                            <h5 class="fs-17 text-center mb-0">Bonds</h5>
+                                        </div>
+                                    </div>
+                                    {% comment %} <div class="card mb-2">
+                                        <div class="card-body">
+                                            <div class="d-flex mb-3">
+                                                <div class="flex-shrink-0 avatar-sm">
+                                                    <div class="avatar-title bg-light rounded">
+                                                        <img src="{% static 'images/svg/crypto-icons/bela.svg'%}" alt="" class="avatar-xxs" />
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h5 class="fs-15 mb-1">Social Chain</h5>
+                                                    <p class="text-muted mb-2">Blockchain Services</p>
+                                                </div>
+                                                <div>
+                                                    <a href="javascript:void(0);" class="badge badge-soft-secondary">Visit Website <i class="ri-arrow-right-up-line align-bottom"></i></a>
+                                                </div>
+                                            </div>
+                                            <h6 class="text-muted mb-0">$14,00,000 / $13,20,471  <span class="badge badge-soft-success">97.62%</span></h6>
+                                        </div>
+                                        <div class="card-body border-top border-top-dashed">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <h6 class="mb-0">2.8 <i class="ri-star-fill align-bottom text-warning"></i></h6>
+                                                </div>
+                                                <h6 class="flex-shrink-0 text-muted mb-0"><i class="ri-time-line align-bottom"></i> 02 Jan, 2022</h6>
+                                            </div>
+                                        </div>
+                                    </div><!--end card-->
+                                    <div class="card mb-2">
+                                        <div class="card-body">
+                                            <div class="d-flex mb-3">
+                                                <div class="flex-shrink-0 avatar-sm">
+                                                    <div class="avatar-title bg-light rounded">
+                                                        <img src="{% static 'images/svg/crypto-icons/arn.svg'%}" alt="" class="avatar-xxs" />
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h5 class="fs-15 mb-1">Angels Crypto</h5>
+                                                    <p class="text-muted mb-2">Blockchain Services</p>
+                                                </div>
+                                                <div>
+                                                    <a href="javascript:void(0);" class="badge badge-soft-secondary">Visit Website <i class="ri-arrow-right-up-line align-bottom"></i></a>
+                                                </div>
+                                            </div>
+                                            <h6 class="text-muted mb-0">$75,00,000 / $59,10,412  <span class="badge badge-soft-success">89.13%</span></h6>
+                                        </div>
+                                        <div class="card-body border-top border-top-dashed">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <h6 class="mb-0">2.1 <i class="ri-star-fill align-bottom text-warning"></i></h6>
+                                                </div>
+                                                <h6 class="flex-shrink-0 text-muted mb-0"><i class="ri-time-line align-bottom"></i> 23 Dec, 2021</h6>
+                                            </div>
+                                        </div>
+                                    </div><!--end card-->
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="d-flex mb-3">
+                                                <div class="flex-shrink-0 avatar-sm">
+                                                    <div class="avatar-title bg-light rounded">
+                                                        <img src="{% static 'images/svg/crypto-icons/cs.svg'%}" alt="" class="avatar-xxs" />
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h5 class="fs-15 mb-1">Codex Exchange</h5>
+                                                    <p class="text-muted mb-2">Exchange</p>
+                                                </div>
+                                                <div>
+                                                    <a href="javascript:void(0);" class="badge badge-soft-secondary">Visit Website <i class="ri-arrow-right-up-line align-bottom"></i></a>
+                                                </div>
+                                            </div>
+                                            <h6 class="text-muted mb-0">$32,00,000 / $28,65,732  <span class="badge badge-soft-success">78.43%</span></h6>
+                                        </div>
+                                        <div class="card-body border-top border-top-dashed">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <h6 class="mb-0">3.0 <i class="ri-star-fill align-bottom text-warning"></i></h6>
+                                                </div>
+                                                <h6 class="flex-shrink-0 text-muted mb-0"><i class="ri-time-line align-bottom"></i> 04 Oct, 2021</h6>
+                                            </div>
+                                        </div>
+                                    </div><!--end card--> {% endcomment %}
+                                </div><!--end col-->
+                            </div><!--end row-->
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </div>
+                <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+
+        {% block footer %}
+        {% include "partials/footer.html" %}
+        {% endblock footer %}
+        </div>
+        <!-- end main content-->
+{% endblock content %}
+
+{% block extra_js %}
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    function addStock() {
+        // Get input values
+        var stockType = $("#stockType").val();
+        var stockSite = $("#stockSite").val();
+        var ttseSymbol = $("#ttseSymbol").val();
+
+        // Create data object to be sent in the AJAX request
+        var data = {
+            type: stockType,
+            site: stockSite,
+            symbol: ttseSymbol
+        };
+
+        // Send AJAX request
+        $.ajax({
+            type: "POST", // Change this to the appropriate HTTP method for your backend
+            url: "{% url 'add.stock' %}", // Replace with your actual backend endpoint
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(response) {
+                // Handle the success response from the backend
+                console.log(response);
+            },
+            error: function(error) {
+                // Handle the error response from the backend
+                console.error(error);
+            }
+        });
+    }
+</script>
+
+{% endblock extra_js %}

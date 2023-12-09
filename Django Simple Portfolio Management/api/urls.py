@@ -14,7 +14,8 @@ urlpatterns = [
     # path('search-queries/', views.Search_QueryListCreateView.as_view(), name='search-query-list'),
 
 
-    path('search-queries/Post/', views.scrape_data, name='search-query-post'),
+    path('add/stock/', views.add_stock_data, name='add.stock'),
+
 
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)

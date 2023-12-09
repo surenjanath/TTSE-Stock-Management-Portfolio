@@ -47,8 +47,7 @@ apps_crm_leads_view = AppsView.as_view(template_name="apps/crm/apps-crm-leads.ht
 apps_crypto_transactions_view = AppsView.as_view(template_name="apps/crypto/apps-crypto-transactions.html")
 apps_crypto_buy_sell_view = AppsView.as_view(template_name="apps/crypto/apps-crypto-buy-sell.html")
 apps_crypto_orders_view = AppsView.as_view(template_name="apps/crypto/apps-crypto-orders.html")
-apps_crypto_wallet_view = AppsView.as_view(template_name="apps/crypto/apps-crypto-wallet.html")
-apps_crypto_ico_view = AppsView.as_view(template_name="apps/crypto/apps-crypto-ico.html")
+
 apps_crypto_kyc_view = AppsView.as_view(template_name="apps/crypto/apps-crypto-kyc.html")
 
 # Invoices
@@ -89,3 +88,12 @@ apps_file_manager_view = AppsView.as_view(template_name="apps/apps-file-manager.
 # Calendar
 apps_api_key_view = AppsView.as_view(template_name="apps/apps-api-key.html")
 apps_todo_view = AppsView.as_view(template_name="apps/apps-todo.html")
+
+
+
+
+# Custom
+apps_crypto_wallet_view = AppsView.as_view(template_name="apps/crypto/apps-crypto-wallet.html")
+apps_crypto_ico_view = AppsView.as_view(template_name="apps/crypto/apps-crypto-ico.html")
+
+manage_stock_view = AppsView.as_view(template_name="apps/Stock/Add_Stock.html")

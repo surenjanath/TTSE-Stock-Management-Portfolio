@@ -3,7 +3,52 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils import timezone
+
 from uuid import uuid4
+
+from django.db.models.signals import post_save
+
+
+
+from .Functions import get_TTSE_Auth
+
+
+class Webscraping_Header(models.Model):
+    header          = models.CharField(max_length=255, null=True, blank=True,)
+    cookie_code     = models.CharField(max_length=500, null=True, blank=True,)
+    time_remaining  = models.IntegerField(default=3600*8) # Seconds
+    status          = models.BooleanField(default=True)
+    message         = models.CharField(max_length=500, null=True, blank=True,)
+    #Utility fields
+    uniqueId        = models.CharField(null=True, blank=True, max_length=100)
+    slug            = models.SlugField(max_length=500, unique=True, blank=True, null=True)
+    date_created    = models.DateTimeField(blank=True, null=True)
+    last_updated    = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return '{} | {}'.format(self.status, self.uniqueId)
+
+    class Meta:
+        ordering = ['date_created']
+
+    def save(self, *args, **kwargs):
+        if self.date_created is None:
+            self.date_created = timezone.localtime(timezone.now())
+
+        if self.uniqueId is None:
+            self.uniqueId = str(uuid4()).split('-')[4]
+            self.slug = slugify('{} | {}'.format(self.status, self.uniqueId))
+
+        self.slug = slugify('{} | {}'.format(self.status, self.uniqueId))
+        self.last_updated = timezone.localtime(timezone.now())
+
+        super(Webscraping_Header, self).save(*args, **kwargs)
+
+    def generate_new_code(self):
+        print("[*] Generating New Code. Please Wait...")
+        HEADER = self.header
+        return get_TTSE_Auth(HEADER)
+
 
 class Stock_Information(models.Model):
     TTSE_Name = models.CharField(max_length=255)
