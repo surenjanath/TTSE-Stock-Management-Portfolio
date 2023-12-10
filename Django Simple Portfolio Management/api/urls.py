@@ -17,5 +17,9 @@ urlpatterns = [
     path('add/stock/', views.add_stock_data, name='add.stock'),
 
 
+
+    path('all_added_stocks/', views.get_stock_information, name='All_Added_Stocks'),
+
+
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)

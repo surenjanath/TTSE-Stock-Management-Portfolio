@@ -7,3 +7,4 @@ class AppsConfig(AppConfig):
 
     def ready(self):
         import api.signal  # Import your signals module
+        

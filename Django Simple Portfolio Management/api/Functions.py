@@ -75,6 +75,7 @@ def get_TTSE_Auth(HEADER):
             response = requests.get(URL, headers = {'Cookie':f"""{decodedCode};""".strip(),'User-Agent':HEADER})
 
             if 'REPUBLIC' in str(response.content):
+                print('Code Generated : ', decodedCode)
                 return {"Auth": decodedCode}
 
     return {"Auth":'Failed'}
@@ -82,17 +83,79 @@ def get_TTSE_Auth(HEADER):
 
 
 
-def fetchTTSE_DATA(session, TTSE_SYMBOL, TYPE):
+def fetchTTSE_DATA(session, TTSE_SYMBOL, TYPE, HEADER_MODEL):
+    latest_entry = HEADER_MODEL.objects.latest('date_created')
+    scraper_header = latest_entry.__dict__
+    TTSE_SYMBOL = str(TTSE_SYMBOL).upper()
+    UserAgent = scraper_header['header']
 
-    Webscraping_Header.objects.
+    AUTH_COOKIE = scraper_header['cookie_code']
+    headers = {
+        'Authority':'www.stockex.co.tt',
+        'Method':'GET',
+        'Scheme':'https',
+        'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+        'Accept-Encoding':'gzip, deflate, br',
+        'Accept-Language':'en-US,en;q=0.9,de;q=0.8',
+        'Cache-Control':'no-cache',
+        'Cookie':f"""{AUTH_COOKIE};""".strip(),
+        'Pragma':'no-cache',
+        'Sec-Ch-Ua-Mobile':'?0',
+        'Sec-Ch-Ua-Platform':'"Windows"',
+        'Sec-Fetch-Dest':'document',
+        'Sec-Fetch-Mode':'navigate',
+        'Sec-Fetch-Site':'cross-site',
+        'Sec-Fetch-User':'?1',
+        'Upgrade-Insecure-Requests':'1',
+        'User-Agent' : UserAgent,
+    }
     URL = f'https://www.stockex.co.tt/manage-stock/{TTSE_SYMBOL}/'
 
-    response = requests.get(URL, headers = {'Cookie':f"""{decodedCode};""".strip(),'User-Agent':HEADER})
+    response = requests.get(URL, headers = headers)
+
+    if ('redirect' in str(response.text)) and (TTSE_SYMBOL not in str(response.text)):
+        latest_entry.status = False
+        latest_entry.save()
 
 
-    print(response.content)
-    return {"good":decodedCode}
+        latest_entry = HEADER_MODEL.objects.latest('date_created')
+        scraper_header = latest_entry.__dict__
 
-    return "not good"
+        UserAgent = scraper_header['header']
+        AUTH_COOKIE = scraper_header['cookie_code']
+
+        headers = {
+            'Authority':'www.stockex.co.tt',
+            'Method':'GET',
+            'Scheme':'https',
+            'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+            'Accept-Encoding':'gzip, deflate, br',
+            'Accept-Language':'en-US,en;q=0.9,de;q=0.8',
+            'Cache-Control':'no-cache',
+            'Cookie':f"""{AUTH_COOKIE};""".strip(),
+            'Pragma':'no-cache',
+            'Sec-Ch-Ua-Mobile':'?0',
+            'Sec-Ch-Ua-Platform':'"Windows"',
+            'Sec-Fetch-Dest':'document',
+            'Sec-Fetch-Mode':'navigate',
+            'Sec-Fetch-Site':'cross-site',
+            'Sec-Fetch-User':'?1',
+            'Upgrade-Insecure-Requests':'1',
+            'User-Agent' : UserAgent,
+        }
+
+        response = requests.get(URL, headers=headers)
+        if 'redirect' in str(response.text):
+
+            return {
+                'status': 'error',
+                'message': 'Web scraping failed twice.',
+            }
+
+    return {
+        'status': 'success',
+        'body' : response.content,
+        'message': 'Web scraping succeeded on the second attempt.',
+    }
 
 
