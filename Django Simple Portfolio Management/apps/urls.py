@@ -86,4 +86,5 @@ urlpatterns = [
 
     #Stock
     path("stock/manage", view=manage_stock_view, name="manage.stock"),
+    path("stock/analysis", view=analysis_stock_view, name="analysis.stock"),
 ]

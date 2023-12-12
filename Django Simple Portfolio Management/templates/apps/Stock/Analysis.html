@@ -1,0 +1,1055 @@
+{% extends "partials/base.html" %}
+{% load static %}
+{% block title %}My Wallet{% endblock title %}
+{% block extra_css %}
+    <link href="{% static 'libs/swiper/swiper-bundle.min.css'%}" rel="stylesheet"  />
+{% endblock extra_css %}
+{% block content %}
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    {% block pagetitle %}
+                    {% include "partials/page-title.html" with pagetitle="Stock" title="Analysis" %}
+                    {% endblock pagetitle %}
+
+                    <div class="row">
+                        <div class="col-xxl-9">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-grow-1">
+                                            <h5 class="card-title mb-0">My Portfolio Statistics</h5>
+                                        </div>
+                                        <div class="toolbar d-flex align-items-start justify-content-center flex-wrap gap-2">
+                                            <button type="button" class="btn btn-soft-secondary timeline-btn btn-sm" id="one_month">
+                                                1M
+                                            </button>
+                                            <button type="button" class="btn btn-soft-secondary timeline-btn btn-sm" id="six_months">
+                                                6M
+                                            </button>
+                                            <button type="button" class="btn btn-soft-secondary timeline-btn btn-sm" id="one_year">
+                                                1Y
+                                            </button>
+                                            <button type="button" class="btn btn-soft-primary timeline-btn btn-sm active" id="all">
+                                                ALL
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div>
+                                        <div id="area_chart_datetime" data-colors='["--vz-primary"]' class="apex-charts" dir="ltr"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-0">Watchlist</h5>
+                                </div>
+                                <div class="flexshrink-0">
+                                    <button class="btn btn-primary btn-sm"><i class="ri-star-line align-bottom"></i> Add Watchlist</button>
+                                </div>
+                            </div>
+
+                            <div class="swiper cryptoSlider">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="float-end">
+                                                    <div class="dropdown">
+                                                        <a class="text-reset" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <span class="text-muted fs-18"><i class="mdi mdi-dots-horizontal"></i></span>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="#">View Details</a>
+                                                            <a class="dropdown-item" href="#">Remove Watchlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="{% static 'images/svg/crypto-icons/btc.svg'%}" class="bg-light rounded-circle p-1 avatar-xs img-fluid" alt="">
+                                                    <h6 class="ms-2 mb-0 fs-14">Bitcoin</h6>
+                                                </div>
+                                                <div class="row align-items-end g-0">
+                                                    <div class="col-6">
+                                                        <h5 class="mb-1 mt-4">$46,335.40</h5>
+                                                        <p class="text-success fs-13 fw-medium mb-0">+0.63%<span class="text-muted ms-2 fs-10">(BTC)</span></p>
+                                                    </div><!-- end col -->
+                                                    <div class="col-6">
+                                                        <div class="apex-charts crypto-widget" data-colors='["--vz-success-rgb, 0.5" , "--vz-transparent"]' id="bitcoin_sparkline_charts" dir="ltr"></div>
+                                                    </div><!-- end col -->
+                                                </div><!-- end row -->
+                                            </div><!-- end card body -->
+                                        </div><!-- end card -->
+                                    </div><!-- end -->
+
+                                    <div class="swiper-slide">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="float-end">
+                                                    <div class="dropdown">
+                                                        <a class="text-reset" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <span class="text-muted fs-18"><i class="mdi mdi-dots-horizontal"></i></span>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="#">View Details</a>
+                                                            <a class="dropdown-item" href="#">Remove Watchlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="{% static 'images/svg/crypto-icons/ltc.svg'%}" class="bg-light rounded-circle p-1 avatar-xs img-fluid" alt="">
+                                                    <h6 class="ms-2 mb-0 fs-14">Litecoin</h6>
+                                                </div>
+                                                <div class="row align-items-end g-0">
+                                                    <div class="col-6">
+                                                        <h5 class="mb-1 mt-4">$65.64</h5>
+                                                        <p class="text-danger fs-13 fw-medium mb-0">-3.42%<span class="text-muted ms-2 fs-10">(LTC)</span></p>
+                                                    </div><!-- end col -->
+                                                    <div class="col-6">
+                                                        <div class="apex-charts crypto-widget" data-colors='["--vz-danger-rgb, 0.5", "--vz-transparent"]' id="litecoin_sparkline_charts" dir="ltr"></div>
+                                                    </div><!-- end col -->
+                                                </div><!-- end row -->
+                                            </div><!-- end card body -->
+                                        </div><!-- end card -->
+                                    </div><!-- end -->
+
+                                    <div class="swiper-slide">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="float-end">
+                                                    <div class="dropdown">
+                                                        <a class="text-reset" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <span class="text-muted fs-18"><i class="mdi mdi-dots-horizontal"></i></span>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="#">View Details</a>
+                                                            <a class="dropdown-item" href="#">Remove Watchlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="{% static 'images/svg/crypto-icons/eth.svg'%}" class="bg-light rounded-circle p-1 avatar-xs img-fluid" alt="">
+                                                    <h6 class="ms-2 mb-0 fs-14">Ethereum</h6>
+                                                </div>
+                                                <div class="row align-items-end g-0">
+                                                    <div class="col-6">
+                                                        <h5 class="mb-1 mt-4">$3,748.66</h5>
+                                                        <p class="text-danger fs-13 fw-medium mb-0">+0.42%<span class="text-muted ms-2 fs-10">(ETH)</span></p>
+                                                    </div><!-- end col -->
+                                                    <div class="col-6">
+                                                        <div class="apex-charts crypto-widget" data-colors='["--vz-danger-rgb, 0.5", "--vz-transparent"]' id="eathereum_sparkline_charts" dir="ltr"></div>
+                                                    </div><!-- end col -->
+                                                </div><!-- end row -->
+                                            </div><!-- end card body -->
+                                        </div><!-- end card -->
+                                    </div><!-- end -->
+
+                                    <div class="swiper-slide">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="float-end">
+                                                    <div class="dropdown">
+                                                        <a class="text-reset" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <span class="text-muted fs-18"><i class="mdi mdi-dots-horizontal"></i></span>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="#">View Details</a>
+                                                            <a class="dropdown-item" href="#">Remove Watchlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="{% static 'images/svg/crypto-icons/xmr.svg'%}" class="bg-light rounded-circle p-1 avatar-xs img-fluid" alt="">
+                                                    <h6 class="ms-2 mb-0 fs-14">Monero</h6>
+                                                </div>
+                                                <div class="row align-items-end g-0">
+                                                    <div class="col-6">
+                                                        <h5 class="mb-1 mt-4">$226.55</h5>
+                                                        <p class="text-danger fs-13 fw-medium mb-0">-1.92%<span class="text-muted ms-2 fs-10">(XMR)</span></p>
+                                                    </div><!-- end col -->
+                                                    <div class="col-6">
+                                                        <div class="apex-charts crypto-widget" data-colors='["--vz-danger-rgb, 0.5", "--vz-transparent"]' id="binance_sparkline_charts" dir="ltr"></div>
+                                                    </div><!-- end col -->
+                                                </div><!-- end row -->
+                                            </div><!-- end card body -->
+                                        </div><!-- end card -->
+                                    </div><!-- end -->
+
+                                    <div class="swiper-slide">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="float-end">
+                                                    <div class="dropdown">
+                                                        <a class="text-reset" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <span class="text-muted fs-18"><i class="mdi mdi-dots-horizontal"></i></span>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="#">View Details</a>
+                                                            <a class="dropdown-item" href="#">Remove Watchlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="{% static 'images/svg/crypto-icons/dash.svg'%}" class="bg-light rounded-circle p-1 avatar-xs img-fluid" alt="">
+                                                    <h6 class="ms-2 mb-0 fs-14">Dash</h6>
+                                                </div>
+                                                <div class="row align-items-end g-0">
+                                                    <div class="col-6">
+                                                        <h5 class="mb-1 mt-4">$142.5</h5>
+                                                        <p class="text-success fs-13 fw-medium mb-0">+16.38%<span class="text-muted ms-2 fs-10">(DASH)</span></p>
+                                                    </div><!-- end col -->
+                                                    <div class="col-6">
+                                                        <div class="apex-charts crypto-widget" data-colors='["--vz-success-rgb, 0.5", "--vz-transparent"]' id="dash_sparkline_charts" dir="ltr"></div>
+                                                    </div><!-- end col -->
+                                                </div><!-- end row -->
+                                            </div><!-- end card body -->
+                                        </div><!-- end card -->
+                                    </div><!-- end -->
+
+                                    <div class="swiper-slide">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="float-end">
+                                                    <div class="dropdown">
+                                                        <a class="text-reset" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <span class="text-muted fs-18"><i class="mdi mdi-dots-horizontal"></i></span>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="#">View Details</a>
+                                                            <a class="dropdown-item" href="#">Remove Watchlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="{% static 'images/svg/crypto-icons/mkr.svg'%}" class="bg-light rounded-circle p-1 avatar-xs img-fluid" alt="">
+                                                    <h6 class="ms-2 mb-0 fs-14">Maker</h6>
+                                                </div>
+                                                <div class="row align-items-end g-0">
+                                                    <div class="col-6">
+                                                        <h5 class="mb-1 mt-4">$2,390.75</h5>
+                                                        <p class="text-success fs-13 fw-medium mb-0">+0.36%<span class="text-muted ms-2 fs-10">(MKR)</span></p>
+                                                    </div><!-- end col -->
+                                                    <div class="col-6">
+                                                        <div class="apex-charts crypto-widget" data-colors='["--vz-success-rgb, 0.5", "--vz-transparent"]' id="tether_sparkline_charts" dir="ltr"></div>
+                                                    </div><!-- end col -->
+                                                </div><!-- end row -->
+                                            </div><!-- end card body -->
+                                        </div><!-- end card -->
+                                    </div><!-- end -->
+
+                                    <div class="swiper-slide">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="float-end">
+                                                    <div class="dropdown">
+                                                        <a class="text-reset" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <span class="text-muted fs-18"><i class="mdi mdi-dots-horizontal"></i></span>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="#">View Details</a>
+                                                            <a class="dropdown-item" href="#">Remove Watchlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="{% static 'images/svg/crypto-icons/neo.svg'%}" class="bg-light rounded-circle p-1 avatar-xs img-fluid" alt="">
+                                                    <h6 class="ms-2 mb-0 fs-14">Neo</h6>
+                                                </div>
+                                                <div class="row align-items-end g-0">
+                                                    <div class="col-6">
+                                                        <h5 class="mb-1 mt-4">$2,145.65</h5>
+                                                        <p class="text-success fs-13 fw-medium mb-0">32.07%<span class="text-muted ms-2 fs-10">(NEO)</span></p>
+                                                    </div><!-- end col -->
+                                                    <div class="col-6">
+                                                        <div class="apex-charts crypto-widget" data-colors='["--vz-success-rgb, 0.5", "--vz-transparent"]' id="neo_sparkline_charts" dir="ltr"></div>
+                                                    </div><!-- end col -->
+                                                </div><!-- end row -->
+                                            </div><!-- end card body -->
+                                        </div><!-- end card -->
+                                    </div><!-- end -->
+                                </div><!-- end swiper wrapper -->
+                            </div><!-- end swiper -->
+
+                            <div class="card" id="marketList">
+                                <div class="card-header border-bottom-dashed d-flex align-items-center">
+                                    <h4 class="card-title mb-0 flex-grow-1">Market Status</h4>
+                                    <div class="flex-shrink-0">
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <button type="button" class="btn btn-primary btn-sm">Today</button>
+                                            <button type="button" class="btn btn-outline-primary btn-sm">Overall</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive table-card">
+                                        <table class="table align-middle table-nowrap" id="customerTable">
+                                            <thead class="table-light text-muted">
+                                                <tr>
+                                                    <th class="sort" data-sort="currency_name" scope="col">Name</th>
+                                                    <th class="sort" data-sort="quantity_value" scope="col">Quantity</th>
+                                                    <th class="sort" data-sort="avg_price" scope="col">Avg. Price</th>
+                                                    <th class="sort" data-sort="current_value" scope="col">Current Value</th>
+                                                    <th class="sort" data-sort="returns" scope="col">Returns</th>
+                                                    <th class="sort" data-sort="returns_per" scope="col">Returns %</th>
+                                                </tr>
+                                            </thead><!--end thead-->
+                                            <tbody class="list form-check-all">
+                                                <tr>
+                                                    <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a></td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center fw-medium">
+                                                            <img src="{% static 'images/svg/crypto-icons/btc.svg'%}" alt="" class="avatar-xxs me-2" />
+                                                            <a href="javascript:void(0)"  class="currency_name link-secondary">Bitcoin (BTC)</a>
+                                                        </div>
+                                                    </td>
+                                                    <td class="quantity_value">08</td>
+                                                    <td class="avg_price">$46,154.30</td>
+                                                    <td class="current_value">$46,335.40</td>
+                                                    <td class="returns">$3,70,683.2</td>
+                                                    <td class="returns_per"><h6 class="text-success fs-13 mb-0"><i class="mdi mdi-trending-up align-middle me-1"></i>0.63%</h6></td>
+                                                </tr><!--end tr-->
+                                                <tr>
+                                                    <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ002</a></td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center fw-medium">
+                                                            <img src="{% static 'images/svg/crypto-icons/eth.svg'%}" alt="" class="avatar-xxs me-2" />
+                                                            <a href="javascript:void(0)"  class="currency_name link-secondary">Ethereum (ETH)</a>
+                                                        </div>
+                                                    </td>
+                                                    <td class="quantity_value">50</td>
+                                                    <td class="avg_price">$3,744.48</td>
+                                                    <td class="current_value">$3,748.66</td>
+                                                    <td class="returns">$1,87,433</td>
+                                                    <td class="returns_per"><h6 class="text-danger fs-13 mb-0"><i class="mdi mdi-trending-down align-middle me-1"></i>3.42%</h6></td>
+                                                </tr><!--end tr-->
+                                                <tr>
+                                                    <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ003</a></td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center fw-medium">
+                                                            <img src="{% static 'images/svg/crypto-icons/xrp.svg'%}" alt="" class="avatar-xxs me-2" />
+                                                            <a href="javascript:void(0)"  class="currency_name link-secondary">Ripple (XRP)</a>
+                                                        </div>
+                                                    </td>
+                                                    <td class="quantity_value">300</td>
+                                                    <td class="avg_price">$1.05</td>
+                                                    <td class="current_value">$2.20</td>
+                                                    <td class="returns">$660</td>
+                                                    <td class="returns_per"><h6 class="text-success fs-13 mb-0"><i class="mdi mdi-trending-up align-middle me-1"></i>1.20%</h6></td>
+                                                </tr><!--end tr-->
+                                                <tr>
+                                                    <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ004</a></td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center fw-medium">
+                                                            <img src="{% static 'images/svg/crypto-icons/xmr.svg'%}" alt="" class="avatar-xxs me-2" />
+                                                            <a href="javascript:void(0)"  class="currency_name link-secondary">Monero (XMR)</a>
+                                                        </div>
+                                                    </td>
+                                                    <td class="quantity_value">150</td>
+                                                    <td class="avg_price">$227.30</td>
+                                                    <td class="current_value">$226.55</td>
+                                                    <td class="returns">$33,982.5</td>
+                                                    <td class="returns_per"><h6 class="text-danger fs-13 mb-0"><i class="mdi mdi-trending-down align-middle me-1"></i>1.92%</h6></td>
+                                                </tr><!--end tr-->
+                                                <tr>
+                                                    <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ005</a></td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center fw-medium">
+                                                            <img src="{% static 'images/svg/crypto-icons/ltc.svg'%}" alt="" class="avatar-xxs me-2" />
+                                                            <a href="javascript:void(0)"  class="currency_name link-secondary">Litecoin (LTC)</a>
+                                                        </div>
+                                                    </td>
+                                                    <td class="quantity_value">200</td>
+                                                    <td class="avg_price">$144.00</td>
+                                                    <td class="current_value">$147.50</td>
+                                                    <td class="returns">$29,500</td>
+                                                    <td class="returns_per"><h6 class="text-danger fs-13 mb-0"><i class="mdi mdi-trending-down align-middle me-1"></i>0.87%</h6></td>
+                                                </tr><!--end tr-->
+                                                <tr>
+                                                    <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ008</a></td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center fw-medium">
+                                                            <img src="{% static 'images/svg/crypto-icons/aave.svg'%}" alt="" class="avatar-xxs me-2" />
+                                                            <a href="javascript:void(0)"  class="currency_name link-secondary">Aave (AAVE)</a>
+                                                        </div>
+                                                    </td>
+                                                    <td class="quantity_value">180</td>
+                                                    <td class="avg_price">$250.70</td>
+                                                    <td class="current_value">$254.30</td>
+                                                    <td class="returns">$45,774</td>
+                                                    <td class="returns_per"><h6 class="text-success fs-13 mb-0"><i class="mdi mdi-trending-up align-middle me-1"></i>3.96%</h6></td>
+                                                </tr><!--end tr-->
+                                                <tr>
+                                                    <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ006</a></td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center fw-medium">
+                                                            <img src="{% static 'images/svg/crypto-icons/mkr.svg'%}" alt="" class="avatar-xxs me-2" />
+                                                            <a href="javascript:void(0)"  class="currency_name link-secondary">Maker (MKR)</a>
+                                                        </div>
+                                                    </td>
+                                                    <td class="quantity_value">60</td>
+                                                    <td class="avg_price">$2,470.30</td>
+                                                    <td class="current_value">$2,390.75</td>
+                                                    <td class="returns">$1,43,445</td>
+                                                    <td class="returns_per"><h6 class="text-success fs-13 mb-0"><i class="mdi mdi-trending-up align-middle me-1"></i>0.36%</h6></td>
+                                                </tr><!--end tr-->
+                                                <tr>
+                                                    <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ007</a></td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center fw-medium">
+                                                            <img src="{% static 'images/svg/crypto-icons/yfi.svg'%}" alt="" class="avatar-xxs me-2" />
+                                                            <a href="javascript:void(0)"  class="currency_name link-secondary">Yearn.finance (YFI)</a>
+                                                        </div>
+                                                    </td>
+                                                    <td class="quantity_value">25</td>
+                                                    <td class="avg_price">$37,632.17</td>
+                                                    <td class="current_value">$39,276.24</td>
+                                                    <td class="returns">$9,81,906</td>
+                                                    <td class="returns_per"><h6 class="text-success fs-13 mb-0"><i class="mdi mdi-trending-up align-middle me-1"></i>3.96%</h6></td>
+                                                </tr><!--end tr-->
+                                            </tbody>
+                                        </table><!--end table-->
+                                        <div class="noresult" style="display: none">
+                                            <div class="text-center">
+                                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"  colors="primary:#25a0e2,secondary:#00bd9d" style="width:75px;height:75px">
+                                                </lord-icon>
+                                                <h5 class="mt-2">Sorry! No Result Found</h5>
+                                                <p class="text-muted mb-0">We've searched more than 150+ Currencies We did not find any
+                                                    Currencies for you search.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end mt-3">
+                                        <div class="pagination-wrap hstack gap-2">
+                                            <a class="page-item pagination-prev disabled" href="#">
+                                                Previous
+                                            </a>
+                                            <ul class="pagination listjs-pagination mb-0"></ul>
+                                            <a class="page-item pagination-next" href="#">
+                                                Next
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--end card-->
+
+                        </div><!--end col-->
+
+                        <div class="col-xxl-3">
+                            <div class="card border-0 overflow-hidden">
+                                <div class="card-body bg-soft-primary">
+                                    <div class="d-flex">
+                                        <div class="flex-grow-1">
+                                            <h5 class="fs-13 mb-3">My Portfolio</h5>
+                                            <h2>$61,91,967<small class="text-muted fs-14">.29</small></h2>
+                                            <p class="text-muted mb-0">$25,10,974 <small class="badge badge-soft-success"><i class="ri-arrow-right-up-line fs-13 align-bottom"></i>4.37%</small></p>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                            <i class="mdi mdi-wallet-outline text-primary h1"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--end card-->
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                        <div class="flex-grow-1">
+                                            <h5 class="fs-13 mb-3">Today's Profit</h5>
+                                            <h2>$2,74,365<small class="text-muted fs-14">.84</small></h2>
+                                            <p class="text-muted mb-0">$9,10,564 <small class="badge badge-soft-success"><i class="ri-arrow-right-up-line fs-13 align-bottom"></i>1.25%</small></p>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                            <i class="ri-hand-coin-line text-primary h1"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--end card-->
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                        <div class="flex-grow-1">
+                                            <h5 class="fs-13 mb-3">Overall Profit</h5>
+                                            <h2>$32,67,120<small class="text-muted fs-14">.42</small></h2>
+                                            <p class="text-muted mb-0">$18,22,730 <small class="badge badge-soft-success"><i class="ri-arrow-right-up-line fs-13 align-bottom"></i>8.34%</small></p>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                            <i class="ri-line-chart-line text-primary h1"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--end card-->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Recent Transaction</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex mb-3">
+                                        <div class="flex-shrink-0">
+                                            <img src="{% static 'images/svg/crypto-icons/btc.svg'%}" alt="" class="avatar-xxs" />
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="mb-1">Bitcoin (BTC)</h6>
+                                            <p class="text-muted mb-0">Today</p>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-danger mb-0">- $422.89</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mb-3">
+                                        <div class="flex-shrink-0">
+                                            <img src="{% static 'images/svg/crypto-icons/ltc.svg'%}" alt="" class="avatar-xxs" />
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="mb-1">Litecoin (LTC)</h6>
+                                            <p class="text-muted mb-0">Yesterday</p>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-success mb-0">+ $784.20</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mb-3">
+                                        <div class="flex-shrink-0">
+                                            <img src="{% static 'images/svg/crypto-icons/xmr.svg'%}" alt="" class="avatar-xxs" />
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="mb-1">Monero (XMR)</h6>
+                                            <p class="text-muted mb-0">01 Jan, 2022</p>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-danger mb-0">- $356.74</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mb-3">
+                                        <div class="flex-shrink-0">
+                                            <img src="{% static 'images/svg/crypto-icons/fil.svg'%}" alt="" class="avatar-xxs" />
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="mb-1">Filecoin (FIL)</h6>
+                                            <p class="text-muted mb-0">30 Dec, 2021</p>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-success mb-0">+ $1,247.00</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mb-3">
+                                        <div class="flex-shrink-0">
+                                            <img src="{% static 'images/svg/crypto-icons/dot.svg'%}" alt="" class="avatar-xxs" />
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="mb-1">Polkadot (DOT)</h6>
+                                            <p class="text-muted mb-0">27 Dec, 2021</p>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-success btn mb-0">+ $7,365.80</h6>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <a href="{% url 'apps:crypto.transactions' %}" class="btn btn-soft-primary w-100">View All Transactions <i class="ri-arrow-right-line align-bottom"></i></a>
+                                    </div>
+                                </div>
+                            </div><!--end card-->
+                        </div><!--end col-->
+                    </div><!--end row-->
+
+                </div>
+                <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+
+        {% block footer %}
+        {% include "partials/footer.html" %}
+        {% endblock footer %}
+        </div>
+        <!-- end main content-->
+{% endblock content %}
+{% block extra_js %}
+    <!-- list.js min js -->
+    <script src="{% static 'libs/list.js/dist/list.min.js'%}"></script>
+    <script src="{% static 'libs/list.pagination.js/dist/list.pagination.min.js'%}"></script>
+
+    <!-- apexcharts -->
+    <script src="{% static 'libs/apexcharts/dist/apexcharts.min.js'%}"></script>
+
+    <!-- Swiper Js -->
+    <script src="{% static 'libs/swiper/swiper-bundle.min.js'%}"></script>
+
+    <!-- crypto-wallet init-->
+    {% comment %} <script src="{% static 'js/pages/crypto-wallet.init.js'%}"></script> {% endcomment %}
+    <script>
+        function getChartColorsArray(e) {
+            if (null !== document.getElementById(e)) {
+            e = document.getElementById(e).getAttribute("data-colors");
+            if (e)
+                return (e = JSON.parse(e)).map(function (e) {
+                var t = e.replace(" ", "");
+                return -1 === t.indexOf(",")
+                    ? getComputedStyle(document.documentElement).getPropertyValue(t) || t
+                    : 2 == (e = e.split(",")).length
+                    ? "rgba(" +
+                    getComputedStyle(document.documentElement).getPropertyValue(e[0]) +
+                    "," +
+                    e[1] +
+                    ")"
+                    : t;
+                });
+            }
+        }
+      var timelinechart,
+        resetCssClasses,
+        OneMonth,
+        SixMonth,
+        OneYear,
+        All,
+        chart,
+        marketList,
+        areachartDatetimeColors = getChartColorsArray("area_chart_datetime"),
+        timLine =
+          (areachartDatetimeColors &&
+            ((timelinechart = {
+              series: [
+                {
+                  name: "Balance",
+                  data: [
+                    [13273596e5, 30.95],
+                    [1327446e6, 31.34],
+                    [13275324e5, 31.18],
+                    [13583772e5, 37.73],
+                    [13584636e5, 37.98],
+                    [13588092e5, 37.95],
+                    [13588956e5, 38.25],
+                    [1358982e6, 38.1],
+                    [13590684e5, 38.32],
+                    [13593276e5, 38.24],
+                    [1359414e6, 38.52],
+                    [13595004e5, 37.94],
+                    [13595868e5, 37.83],
+                    [13596732e5, 38.34],
+                    [13599324e5, 38.1],
+                    [13600188e5, 38.51],
+                    [13601052e5, 38.4],
+                    [13601916e5, 38.07],
+                    [1360278e6, 39.12],
+                    [13605372e5, 38.64],
+                    [13606236e5, 38.89],
+                    [136071e7, 38.81],
+                    [13607964e5, 38.61],
+                    [13608828e5, 38.63],
+                    [13612284e5, 38.99],
+                    [13613148e5, 38.77],
+                    [13614012e5, 38.34],
+                    [13614876e5, 38.55],
+                    [13617468e5, 38.11],
+                    [13618332e5, 38.59],
+                    [13619196e5, 39.6],
+                  ],
+                },
+              ],
+              chart: {
+                id: "area-datetime",
+                type: "area",
+                height: 320,
+                zoom: { autoScaleYaxis: !0 },
+                toolbar: { show: !1 },
+              },
+              yaxis: { title: { text: "$ (thousands)" } },
+              colors: areachartDatetimeColors,
+              dataLabels: { enabled: !1 },
+              markers: { size: 0, style: "hollow" },
+              xaxis: {
+                type: "datetime",
+                min: new Date("01 Mar 2012").getTime(),
+                tickAmount: 6,
+              },
+              tooltip: {
+                x: { format: "dd MMM yyyy" },
+                y: {
+                  formatter: function (e) {
+                    return void 0 !== e ? "$" + e.toFixed(2) + "k" : e;
+                  },
+                },
+              },
+              fill: {
+                type: "gradient",
+                gradient: {
+                  shadeIntensity: 1,
+                  inverseColors: !1,
+                  opacityFrom: 0.45,
+                  opacityTo: 0.05,
+                  stops: [20, 100, 100, 100],
+                },
+              },
+            }),
+            (timelinechart = new ApexCharts(
+              document.querySelector("#area_chart_datetime"),
+              timelinechart
+            )).render()),
+          document.querySelectorAll(".timeline")),
+        areachartbitcoinColors =
+          (timLine &&
+            ((resetCssClasses = function (e) {
+              var t = document.querySelectorAll(".timeline");
+              Array.prototype.forEach.call(t, function (e) {
+                e.classList.remove("active");
+              }),
+                e.target.classList.add("active");
+            }),
+            (OneMonth = document.querySelector("#one_month")) &&
+              document
+                .querySelector("#one_month")
+                .addEventListener("click", function (e) {
+                  resetCssClasses(e),
+                    timelinechart.zoomX(
+                      new Date("28 Jan 2013").getTime(),
+                      new Date("27 Feb 2013").getTime()
+                    );
+                }),
+            (SixMonth = document.querySelector("#six_months")) &&
+              document
+                .querySelector("#six_months")
+                .addEventListener("click", function (e) {
+                  resetCssClasses(e),
+                    timelinechart.zoomX(
+                      new Date("27 Sep 2012").getTime(),
+                      new Date("27 Feb 2013").getTime()
+                    );
+                }),
+            (OneYear = document.querySelector("#one_year")) &&
+              document
+                .querySelector("#one_year")
+                .addEventListener("click", function (e) {
+                  resetCssClasses(e),
+                    timelinechart.zoomX(
+                      new Date("27 Feb 2012").getTime(),
+                      new Date("27 Feb 2013").getTime()
+                    );
+                }),
+            (All = document.querySelector("#all"))) &&
+            document.querySelector("#all").addEventListener("click", function (e) {
+              resetCssClasses(e),
+                timelinechart.zoomX(
+                  new Date("23 Jan 2012").getTime(),
+                  new Date("27 Feb 2013").getTime()
+                );
+            }),
+          getChartColorsArray("bitcoin_sparkline_charts")),
+        areachartlitecoinColors =
+          (areachartbitcoinColors &&
+            ((options = {
+              series: [{ name: "Bitcoin", data: [85, 68, 35, 90, 8, 11, 26, 54] }],
+              chart: {
+                width: "100%",
+                height: 50,
+                type: "area",
+                sparkline: { enabled: !0 },
+                toolbar: { show: !1 },
+              },
+              dataLabels: { enabled: !1 },
+              stroke: { curve: "smooth", width: 1.5 },
+              fill: {
+                type: "gradient",
+                gradient: {
+                  shadeIntensity: 1,
+                  inverseColors: !1,
+                  opacityFrom: 0.45,
+                  opacityTo: 0.05,
+                  stops: [50, 100, 100, 100],
+                },
+              },
+              colors: areachartbitcoinColors,
+            }),
+            (chart = new ApexCharts(
+              document.querySelector("#bitcoin_sparkline_charts"),
+              options
+            )).render()),
+          getChartColorsArray("litecoin_sparkline_charts")),
+        areacharteathereumColors =
+          (areachartlitecoinColors &&
+            ((options = {
+              series: [{ name: "Litecoin", data: [25, 50, 41, 87, 12, 36, 9, 54] }],
+              chart: {
+                width: "100%",
+                height: 46,
+                type: "area",
+                sparkline: { enabled: !0 },
+                toolbar: { show: !1 },
+              },
+              dataLabels: { enabled: !1 },
+              stroke: { curve: "smooth", width: 1.5 },
+              fill: {
+                type: "gradient",
+                gradient: {
+                  shadeIntensity: 1,
+                  inverseColors: !1,
+                  opacityFrom: 0.45,
+                  opacityTo: 0.05,
+                  stops: [50, 100, 100, 100],
+                },
+              },
+              colors: areachartlitecoinColors,
+            }),
+            (chart = new ApexCharts(
+              document.querySelector("#litecoin_sparkline_charts"),
+              options
+            )).render()),
+          getChartColorsArray("eathereum_sparkline_charts")),
+        areachartbinanceColors =
+          (areacharteathereumColors &&
+            ((options = {
+              series: [{ name: "Eathereum", data: [36, 21, 65, 22, 35, 50, 29, 44] }],
+              chart: {
+                width: "100%",
+                height: 46,
+                type: "area",
+                sparkline: { enabled: !0 },
+                toolbar: { show: !1 },
+              },
+              dataLabels: { enabled: !1 },
+              stroke: { curve: "smooth", width: 1.5 },
+              fill: {
+                type: "gradient",
+                gradient: {
+                  shadeIntensity: 1,
+                  inverseColors: !1,
+                  opacityFrom: 0.45,
+                  opacityTo: 0.05,
+                  stops: [50, 100, 100, 100],
+                },
+              },
+              colors: areacharteathereumColors,
+            }),
+            (chart = new ApexCharts(
+              document.querySelector("#eathereum_sparkline_charts"),
+              options
+            )).render()),
+          getChartColorsArray("binance_sparkline_charts")),
+        areachartdashColors =
+          (areachartbinanceColors &&
+            ((options = {
+              series: [{ name: "Monero", data: [30, 58, 29, 89, 12, 36, 9, 54] }],
+              chart: {
+                width: "100%",
+                height: 46,
+                type: "area",
+                sparkline: { enabled: !0 },
+                toolbar: { show: !1 },
+              },
+              dataLabels: { enabled: !1 },
+              stroke: { curve: "smooth", width: 1.5 },
+              fill: {
+                type: "gradient",
+                gradient: {
+                  shadeIntensity: 1,
+                  inverseColors: !1,
+                  opacityFrom: 0.45,
+                  opacityTo: 0.05,
+                  stops: [50, 100, 100, 100],
+                },
+              },
+              colors: areachartbinanceColors,
+            }),
+            (chart = new ApexCharts(
+              document.querySelector("#binance_sparkline_charts"),
+              options
+            )).render()),
+          getChartColorsArray("dash_sparkline_charts")),
+        areacharttetherColors =
+          (areachartdashColors &&
+            ((options = {
+              series: [{ name: "Dash", data: [24, 68, 39, 86, 29, 42, 11, 58] }],
+              chart: {
+                width: "100%",
+                height: 46,
+                type: "area",
+                sparkline: { enabled: !0 },
+                toolbar: { show: !1 },
+              },
+              dataLabels: { enabled: !1 },
+              stroke: { curve: "smooth", width: 1.5 },
+              fill: {
+                type: "gradient",
+                gradient: {
+                  shadeIntensity: 1,
+                  inverseColors: !1,
+                  opacityFrom: 0.45,
+                  opacityTo: 0.05,
+                  stops: [50, 100, 100, 100],
+                },
+              },
+              colors: areachartdashColors,
+            }),
+            (chart = new ApexCharts(
+              document.querySelector("#dash_sparkline_charts"),
+              options
+            )).render()),
+          getChartColorsArray("tether_sparkline_charts")),
+        areachartneoColors =
+          (areacharttetherColors &&
+            ((options = {
+              series: [{ name: "Dash", data: [13, 76, 12, 85, 25, 60, 9, 54] }],
+              chart: {
+                width: "100%",
+                height: 46,
+                type: "area",
+                sparkline: { enabled: !0 },
+                toolbar: { show: !1 },
+              },
+              dataLabels: { enabled: !1 },
+              stroke: { curve: "smooth", width: 1.5 },
+              fill: {
+                type: "gradient",
+                gradient: {
+                  shadeIntensity: 1,
+                  inverseColors: !1,
+                  opacityFrom: 0.45,
+                  opacityTo: 0.05,
+                  stops: [50, 100, 100, 100],
+                },
+              },
+              colors: areacharttetherColors,
+            }),
+            (chart = new ApexCharts(
+              document.querySelector("#tether_sparkline_charts"),
+              options
+            )).render()),
+          getChartColorsArray("neo_sparkline_charts")),
+        swiper =
+          (areachartneoColors &&
+            ((options = {
+              series: [{ name: "Neo", data: [9, 66, 41, 89, 12, 36, 25, 54] }],
+              chart: {
+                width: "100%",
+                height: 46,
+                type: "area",
+                sparkline: { enabled: !0 },
+                toolbar: { show: !1 },
+              },
+              dataLabels: { enabled: !1 },
+              stroke: { curve: "smooth", width: 1.5 },
+              fill: {
+                type: "gradient",
+                gradient: {
+                  shadeIntensity: 1,
+                  inverseColors: !1,
+                  opacityFrom: 0.45,
+                  opacityTo: 0.05,
+                  stops: [50, 100, 100, 100],
+                },
+              },
+              colors: areachartneoColors,
+            }),
+            (chart = new ApexCharts(
+              document.querySelector("#neo_sparkline_charts"),
+              options
+            )).render()),
+          new Swiper(".cryptoSlider", {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+            autoplay: { delay: 2500, disableOnInteraction: !1 },
+            breakpoints: {
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+              1600: { slidesPerView: 4 },
+            },
+          })),
+        perPage = 6,
+        options = {
+          valueNames: [
+            "id",
+            "currency_name",
+            "quantity_value",
+            "avg_price",
+            "current_value",
+            "returns",
+            "returns_per",
+          ],
+          page: perPage,
+          pagination: !0,
+          plugins: [ListPagination({ left: 2, right: 2 })],
+        },
+        MarketList = document.getElementById("marketList"),
+        paginationNext =
+          (MarketList &&
+            ((marketList = new List("marketList", options).on(
+              "updated",
+              function (e) {
+                0 == e.matchingItems.length
+                  ? (document.getElementsByClassName("noresult")[0].style.display =
+                      "block")
+                  : (document.getElementsByClassName("noresult")[0].style.display =
+                      "none");
+                var t = 1 == e.i,
+                  a = e.i > e.matchingItems.length - e.page;
+                document.querySelector(".pagination-prev.disabled") &&
+                  document
+                    .querySelector(".pagination-prev.disabled")
+                    .classList.remove("disabled"),
+                  document.querySelector(".pagination-next.disabled") &&
+                    document
+                      .querySelector(".pagination-next.disabled")
+                      .classList.remove("disabled"),
+                  t &&
+                    document
+                      .querySelector(".pagination-prev")
+                      .classList.add("disabled"),
+                  a &&
+                    document
+                      .querySelector(".pagination-next")
+                      .classList.add("disabled"),
+                  e.matchingItems.length <= perPage
+                    ? (document.querySelector(".pagination-wrap").style.display =
+                        "none")
+                    : (document.querySelector(".pagination-wrap").style.display =
+                        "flex"),
+                  0 < e.matchingItems.length
+                    ? (document.getElementsByClassName("noresult")[0].style.display =
+                        "none")
+                    : (document.getElementsByClassName("noresult")[0].style.display =
+                        "block");
+              }
+            )),
+            (isCount = new DOMParser().parseFromString(
+              marketList.items.slice(-1)[0]._values.id,
+              "text/html"
+            ))),
+          document.querySelector(".pagination-next")),
+        paginationPrev =
+          (paginationNext &&
+            document
+              .querySelector(".pagination-next")
+              .addEventListener("click", function () {
+                document.querySelector(".pagination.listjs-pagination") &&
+                  document
+                    .querySelector(".pagination.listjs-pagination")
+                    .querySelector(".active") &&
+                  document
+                    .querySelector(".pagination.listjs-pagination")
+                    .querySelector(".active")
+                    .nextElementSibling.children[0].click();
+              }),
+          document.querySelector(".pagination-prev"));
+      paginationPrev &&
+        document
+          .querySelector(".pagination-prev")
+          .addEventListener("click", function () {
+            document.querySelector(".pagination.listjs-pagination") &&
+              document
+                .querySelector(".pagination.listjs-pagination")
+                .querySelector(".active") &&
+              document
+                .querySelector(".pagination.listjs-pagination")
+                .querySelector(".active")
+                .previousSibling.children[0].click();
+          });
+      </script>
+{% endblock extra_js %}

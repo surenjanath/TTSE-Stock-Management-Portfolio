@@ -44,7 +44,7 @@
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarCrypto">
                                 <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
+                                    {% comment %} <li class="nav-item">
                                         <a href="{% url 'apps:crypto.transactions' %}" class="nav-link" data-key="t-transactions"> Transactions </a>
                                     </li>
                                     <li class="nav-item">
@@ -55,12 +55,12 @@
                                     </li>
                                     <li class="nav-item">
                                         <a href="{% url 'apps:crypto.wallet' %}" class="nav-link" data-key="t-my-wallet"> My Wallet </a>
-                                    </li>
+                                    </li> {% endcomment %}
                                     <li class="nav-item">
                                         <a href="{% url 'apps:manage.stock' %}" class="nav-link" data-key="t-manage-stock"> Manage Stocks </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{% url 'apps:crypto.kyc' %}" class="nav-link" data-key="t-kyc-application"> KYC Application </a>
+                                        <a href="{% url 'apps:analysis.stock' %}" class="nav-link" data-key="t-analysis-stock"> Stock Analysis </a>
                                     </li>
                                 </ul>
                             </div>

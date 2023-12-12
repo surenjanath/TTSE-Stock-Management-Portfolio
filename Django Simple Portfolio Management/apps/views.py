@@ -96,4 +96,9 @@ apps_todo_view = AppsView.as_view(template_name="apps/apps-todo.html")
 apps_crypto_wallet_view = AppsView.as_view(template_name="apps/crypto/apps-crypto-wallet.html")
 apps_crypto_ico_view = AppsView.as_view(template_name="apps/crypto/apps-crypto-ico.html")
 
+
+
+
+
 manage_stock_view = AppsView.as_view(template_name="apps/Stock/Add_Stock.html")
+analysis_stock_view = AppsView.as_view(template_name="apps/Stock/Analysis.html")

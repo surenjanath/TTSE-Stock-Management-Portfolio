@@ -15,10 +15,14 @@ urlpatterns = [
 
 
     path('add/stock/', views.add_stock_data, name='add.stock'),
+    path('add/transaction/', views.add_stock_transaction, name='add.transaction'),
 
 
 
     path('all_added_stocks/', views.get_stock_information, name='All_Added_Stocks'),
+
+    path('portfolio-analysis/', views.PortfolioAnalysisAPIView.as_view(), name='portfolio-analysis-api'),
+    path('portfolio-value/', views.PortfolioValueAPIView.as_view(), name='portfolio-value-api'),
 
 
 ]

@@ -2,6 +2,18 @@
 from django.contrib import admin
 from api.models import *
 
+@admin.register(StockTransaction)
+class StockTransactionAdmin(admin.ModelAdmin):
+    list_display = ('stock_information', 'transaction_type', 'number_of_stocks', 'transaction_date_display')
+    list_filter = ('transaction_type', 'stock_information__TTSE_Symbol')
+    search_fields = ('stock_information__TTSE_Symbol', 'transaction_type')
+    ordering = ('-transaction_date',)
+
+    def transaction_date_display(self, obj):
+        return obj.transaction_date.strftime("%d %b, %Y %H:%M:%S")
+
+    transaction_date_display.short_description = 'Transaction Date'
+
 
 @admin.register(Webscraping_Header)
 class WebscrapingHeaderAdmin(admin.ModelAdmin):
